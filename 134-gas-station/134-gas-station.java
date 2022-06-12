@@ -5,7 +5,7 @@ class Solution {
         int deficit = 0;
         for (int i = 0; i < gas.length; i++) {
              deficit = deficit + (gas[i]-cost[i]);
-            
+            ;
            surplus = surplus + gas[i]-cost[i];
             if (surplus < 0) {
                 surplus = 0;

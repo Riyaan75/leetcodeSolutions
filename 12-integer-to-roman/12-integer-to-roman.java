@@ -12,8 +12,8 @@ class Solution {
                 n.append(R[i]);
                 num-=r[i--];
             }
-            if(num==0)
-            break;
+            // if(num==0)
+            // break;
             
         }
         return n.toString();

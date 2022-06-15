@@ -1,18 +1,13 @@
 class Solution {
     public int diagonalSum(int[][] mat) {
-        int i,j,sum=0;
-        for(i=0;i<mat.length;i++){
-            for(j=0;j<mat.length;j++){
-                if(i==j)
-                    sum+=mat[i][j];
+        int sum1=0, sum2=0;
+        for(int i=0; i<mat.length; i++)
+        {
+            for(int j=0; j<mat.length; j++)
+            {
+                if(i==j || i==mat.length-1-j) sum1+=mat[i][j];
             }
         }
-          for(i=0;i<mat.length;i++){
-            for(j=0;j<mat.length;j++){
-                if(i!=j&&(i+j)==mat.length-1)
-                    sum+=mat[i][j];
-            }
-        }
-        return sum;
+        return sum1;
     }
 }

@@ -1,22 +1,25 @@
 class Solution {
     public boolean isSubsequence(String s, String t) {
-        int l=s.length();
-        int i,j,c=0,p=0;
-        for(i=0;i<l;i++){
-            char ch1=s.charAt(i);
-            for(j=p;j<t.length();j++){
-                char ch2=t.charAt(j);
-                if(ch1==ch2)
-                {
-                    c++;
-                    p=j+1;
-                    break;
-                }
-            }
-        }
-        if(c==l)
+        int l1=s.length();
+        int l2=t.length();
+        int i=0,p=0,p1=0;
+        boolean result=false;
+        if(l1==0)
             return true;
-        else 
+        if(l2==0)
             return false;
+        while(i<l1  &&p<l2){
+            if(s.charAt(i)==t.charAt(p)){
+                i++;
+                result=true;
+            }
+            else{
+                result=false;
+            }
+            p++;
+        }
+        if(i!=l1)
+            result=false;
+        return result;
     }
 }

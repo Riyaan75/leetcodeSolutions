@@ -25,31 +25,35 @@ class GFG
 // } Driver Code Ends
 
 
-class Solution
-{   
-   
-       List<String> res = new ArrayList<>();
-       public void subsequence(String s, String str, int indx)
-       {   
-           if(indx > s.length()) return;
-           if(indx == s.length())
-           {
-               
-                   res.add(str);
-                   return;
-               
-           }
-           subsequence(s, str + s.charAt(indx), indx+1);
-           subsequence(s, str, indx+1);
-           return;
-       }
-   public List<String> AllPossibleStrings(String s)
-   {
-       // Code here
-       subsequence(s, new String(), 0);
-       res.remove(res.size()-1);
-       Collections.sort(res);
-       return res;
-   }
+//User function Template for Java
 
+class Solution
+{
+    public static List<String> AllPossibleStrings(String s){
+        List<String> res=subsequence(s);
+        res.remove(0);
+        return res;
+    }
+    public static List<String> subsequence(String s)
+    {
+        // Code here
+         if(s.length()==0){
+            List<String> list=new ArrayList<>();
+            list.add("");
+            return list;
+        }
+        //extracting first charachter 
+        char singleChar=s.charAt(0);
+        //decreasing the size of string
+        String subString=s.substring(1);
+        List<String> result=new ArrayList<>();
+        result=subsequence(subString);
+        List<String> finalResult=new ArrayList<>();
+        for(String e: result){
+            finalResult.add(e);
+            finalResult.add(singleChar+e);
+        }
+         Collections.sort(finalResult);
+         return finalResult;
+    }
 }

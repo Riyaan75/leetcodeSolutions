@@ -1,10 +1,15 @@
 class Solution {
     public boolean isPowerOfTwo(int n) {
-        for(int i=0;i<31;i++){
-            int r=(int)Math.pow(2,i);
-            if(n==r)
-                return true;
-        }
-        return false;
+        if(n==1) return true;
+        return check(n,2);
+    }
+    
+    public static boolean check(int n,long product){
+        if(product==n) 
+            return true;
+        product*=2;
+        if(product>n)
+            return false;
+        return check(n,product);
     }
 }

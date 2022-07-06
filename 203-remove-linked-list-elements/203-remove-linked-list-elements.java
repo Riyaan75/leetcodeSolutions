@@ -9,17 +9,17 @@
  * }
  */
 class Solution {
-public ListNode removeElements(ListNode head, int val) {
-        ListNode cur = head;
-        while (cur!=null && cur.next!=null){
-            if (cur.next.val == val){
-                cur.next = cur.next.next;
-            }else {
-                cur = cur.next;
+    public ListNode removeElements(ListNode head, int val) {
+        while(head!=null && head.val==val)
+            head=head.next;
+        ListNode chead=head;
+        while(chead!=null && chead.next!=null){
+            if(chead.next.val==val){
+                chead.next=chead.next.next;
             }
-        }
-        if(head!=null && head.val == val){
-            head = head.next;
+            else
+                chead=chead.next;
+            
         }
         return head;
     }

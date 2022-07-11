@@ -10,22 +10,22 @@
  */
 class Solution {
     //Approach 1 3 pointer 
-     public ListNode reverseList(ListNode head) {
-         if(head==null)
-             return head;
-         ListNode prev=head;
-         ListNode cur=prev.next;
-         while(cur!=null){
-             ListNode ahead=cur.next;
-             cur.next=prev;
-             prev=cur;
-             cur=ahead;
-         }
-         ListNode t=head;
-         head=prev;
-         t.next=null;
-         return head;
-     }
+//      public ListNode reverseList(ListNode head) {
+//          if(head==null)
+//              return head;
+//          ListNode prev=head;
+//          ListNode cur=prev.next;
+//          while(cur!=null){
+//              ListNode ahead=cur.next;
+//              cur.next=prev;
+//              prev=cur;
+//              cur=ahead;
+//          }
+//          ListNode t=head;
+//          head=prev;
+//          t.next=null;
+//          return head;
+//      }
     
     
     // Approach 2 swapping the values
@@ -61,4 +61,15 @@ class Solution {
 //         }
 //         return head;
 //     }
+    
+    //Approach 3 Recursion
+     public ListNode reverseList(ListNode head) {
+         if(head==null|| head.next==null)
+             return head;
+         ListNode newHead=reverseList(head.next);
+         ListNode headNext=head.next;
+         headNext.next=head;
+         head.next=null;
+         return newHead;
+     }
 }

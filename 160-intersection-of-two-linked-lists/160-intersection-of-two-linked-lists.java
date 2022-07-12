@@ -19,6 +19,6 @@ public class Solution {
                 a=a==null?headA:a.next;
                 b=b==null?headB:b.next; 
         }
-        return b;
+        return a;
     }
 }

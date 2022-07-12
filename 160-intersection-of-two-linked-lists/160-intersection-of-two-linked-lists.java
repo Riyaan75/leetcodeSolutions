@@ -10,6 +10,7 @@
  * }
  */
 public class Solution {
+    //approach 1 changing the heads of each other to reduce time
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if(headA==null || headB==null) return null;
         ListNode a=headA;

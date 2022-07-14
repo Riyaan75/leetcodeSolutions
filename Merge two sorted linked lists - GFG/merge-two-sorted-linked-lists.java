@@ -87,37 +87,57 @@ class MergeLists
 
 class LinkedList
 {
-    //Function to merge two sorted linked list.
-    Node sortedMerge(Node head1, Node head2) {
-        Node head3;
-        if(head1==null)
-        return head2;
-        if(head2==null)
+    //approach 1 recursion
+     Node sortedMerge(Node head1, Node head2) {
+    // This is a "method-only" submission. 
+    
+    // You only need to complete this method
+    if(head1==null) return head2;
+    if(head2==null) return head1;
+    
+    if(head1.data<head2.data)
+    {
+        head1.next=sortedMerge(head1.next,head2);
         return head1;
+    }
+    else
+    {
+        head2.next=sortedMerge(head1,head2.next);
+        return head2;
+    }
+    
+  } 
+    //Function to merge two sorted linked list.
+//     Node sortedMerge(Node head1, Node head2) {
+//         Node head3;
+//         if(head1==null)
+//         return head2;
+//         if(head2==null)
+//         return head1;
         
-        if(head1.data>head2.data){
-            head3=head2;
-            head2=head2.next;
-        }
-        else
-        {
-        head3=head1;
-        head1=head1.next;
-    }
-    Node t=head3;
-    while(head1!=null&&head2!=null){
-        if(head1.data<=head2.data){
-            t.next=head1;
-            t=t.next;
-            head1=head1.next;
-        }
-           else{
-            t.next=head2;
-            t=t.next;
-            head2=head2.next;
-        }
-    }
-    t.next=head1!=null?head1:head2;
-    return head3;
-   } 
+//         if(head1.data>head2.data){
+//             head3=head2;
+//             head2=head2.next;
+//         }
+//         else
+//         {
+//         head3=head1;
+//         head1=head1.next;
+//     }
+//     Node t=head3;
+//     while(head1!=null&&head2!=null){
+//         if(head1.data<=head2.data){
+//             t.next=head1;
+//             t=t.next;
+//             head1=head1.next;
+//         }
+//           else{
+//             t.next=head2;
+//             t=t.next;
+//             head2=head2.next;
+//         }
+//     }
+//     t.next=head1!=null?head1:head2;
+//     return head3;
+//   } 
 }

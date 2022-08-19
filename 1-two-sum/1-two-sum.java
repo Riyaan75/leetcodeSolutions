@@ -10,10 +10,8 @@ class Solution {
             }
             else{
                 map.put(nums[i],i);
-            }
-            
-        }
-       
+            }   
+        }      
         return a;
     }
 }

@@ -10,24 +10,26 @@ class Solution {
     
     //this will return the index value of the target
     int search(int[] nums , int target , boolean findStartIndex){
-        int ans =-1;
-         int l = 0, h = nums.length-1;
-        while(l<=h){
-            int mid = l +(h-l)/2;
-            if(target < nums[mid])
-                h = mid-1;
-            else if(target> nums[mid])
-                l = mid+1;
+        int ans = -1;
+        int low = 0,high = nums.length-1,mid;
+        while(low<=high){
+            mid = low + (high - low)/2;
+            if(nums[mid]>target){
+               high = mid -1;
+            }
+            else if(nums[mid]<target)
+                low = mid +1;
+                
             else{
-                //potential ans found
                 ans = mid;
                 if(findStartIndex){
-                    h = mid -1;   
+                  high = mid-1;
                 }
-                else
-                    l = mid+1;
+                else 
+                    low= mid+1;
             }
+            
         }
         return ans;
-    }
+}
 }

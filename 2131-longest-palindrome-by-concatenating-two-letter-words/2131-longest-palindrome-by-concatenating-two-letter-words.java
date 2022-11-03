@@ -1,32 +1,25 @@
 class Solution {
-public int longestPalindrome(String[] words) {
-    HashMap<String, Integer> m = new HashMap();
-    int unpaired = 0, ans = 0;
-    for (String w: words) {
-        if (!m.containsKey(w)) m.put(w, 0);
-        if (w.charAt(0) == w.charAt(1)) {
-            if (m.get(w) > 0) {
-                unpaired--;
-                m.put(w, m.get(w) - 1);
-                ans += 4;
+    public int longestPalindrome(String[] words) {
+        int res=0, maidenMirrors = 0;
+        HashMap<String, Integer> wordCount=new HashMap<>();
+        for(String word: words) wordCount.put(word, wordCount.getOrDefault(word, 0)+1);
+        for(String word: wordCount.keySet())
+        {
+            char a = word.charAt(0), b = word.charAt(1);
+            int count = wordCount.get(word);
+            if(a == b) {
+                //is mirror
+                maidenMirrors += count%2;
+                res += count/2;
             }
-            else {
-                m.put(w, m.get(w) + 1);
-                unpaired++;
+            else if(a < b && wordCount.containsKey(b+""+a)) {
+                //has mirror
+                res += Math.min(count, wordCount.get(b+""+a));
             }
         }
-        else {
-            String rev = Character.toString(w.charAt(1)) + 
-                Character.toString(w.charAt(0));
-            if (m.containsKey(rev) && m.get(rev) > 0) {
-                ans += 4;
-                m.put(rev, m.get(rev) - 1);
-            }
-            else m.put(w, m.get(w) + 1);
-        }
-
+        
+        res *= 4;
+        if(maidenMirrors > 0) res += 2;
+        return res;
     }
-    if (unpaired > 0) ans += 2;
-    return ans;
-}
 }
